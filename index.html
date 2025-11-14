@@ -77,14 +77,17 @@
   <section id="contact" class="reveal">
     <h2>Contact Me</h2>
 
-    <form onsubmit="return validateForm()" class="contact-form">
+    <form id="contactForm" class="contact-form">
 
       <div class="form-row">
-        <input type="text" id="name" placeholder="Your Name" required />
-        <input type="email" id="email" placeholder="Your Email" required />
+        <input type="text" name="from_name" id="name" placeholder="Your Name" required />
+        <input type="email" name="from_email" id="email" placeholder="Your Email" required />
+      </div>
       </div>
 
-      <textarea id="message" rows="5" placeholder="Message" required></textarea>
+      <div class="form-row">
+        <textarea name="message" id="message" rows="5" placeholder="Message" required></textarea>
+      </div>
 
       <button type="submit" class="send-btn">Send Message</button>
 
@@ -95,6 +98,6 @@
 
   <!-- JS File -->
   <script src="script.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </body>
 </html>

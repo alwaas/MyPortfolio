@@ -157,6 +157,8 @@ body.dark .project-card { background: #333; }
   display: flex;
   flex-direction: column;
   gap: 15px;
+  width: 80%;              /* 👈 Total container width (adjust if needed) */
+  margin: auto;
 }
 
 .form-row {
@@ -165,7 +167,7 @@ body.dark .project-card { background: #333; }
 }
 
 .form-row input {
-  flex: 1;
+  flex: 1;                 /* 👈 Both inputs take equal width */
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -173,7 +175,7 @@ body.dark .project-card { background: #333; }
 }
 
 textarea {
-  width: 100%;
+  width: 100%;             /* 👈 EXACT width of the whole row (Name + Email) */
   padding: 12px;
   border-radius: 6px;
   border: 1px solid #ccc;
@@ -196,8 +198,12 @@ textarea {
   background: #1558b0;
 }
 
-/* Mobile Responsive */
+/* MOBILE RESPONSIVE */
 @media (max-width: 600px) {
+  .contact-form {
+    width: 90%;
+  }
+
   .form-row {
     flex-direction: column;
   }

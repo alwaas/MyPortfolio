@@ -66,3 +66,21 @@ window.addEventListener("scroll", () => {
 topBtn.onclick = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
+
+// EmailJS Initialization
+emailjs.init("HYkii9n-oDCPmXW6v");   // ← Replace this
+
+// Submit Handler
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    emailjs.sendForm("service_d6g670l", "template_f7rafcl", this)
+    .then(() => {
+        alert("Message Sent Successfully!");
+        this.reset();
+    }, (error) => {
+        alert("Failed to send message. Please try again.");
+        console.log(error);
+    });
+});
+
