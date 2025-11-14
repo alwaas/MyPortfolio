@@ -68,19 +68,34 @@ topBtn.onclick = () => {
 };
 
 // EmailJS Initialization
-emailjs.init("HYkii9n-oDCPmXW6v");   // ← Replace this
+emailjs.init("HYkii9n-oDCPmXW6v");
 
-// Submit Handler
-document.getElementById("contactForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+// SUBMIT HANDLER
+document.getElementById("contactForm").addEventListener("submit", function (e) {
+  e.preventDefault();
 
-    emailjs.sendForm("service_d6g670l", "template_f7rafcl", this)
+  const loader = document.getElementById("loading");
+  const success = document.getElementById("successMsg");
+
+  loader.style.display = "block";
+  success.style.display = "none";
+
+  emailjs.sendForm("service_d6g670l", "template_f7rafcl", this)
     .then(() => {
-        alert("Message Sent Successfully!");
-        this.reset();
-    }, (error) => {
-        alert("Failed to send message. Please try again.");
-        console.log(error);
+
+      loader.style.display = "none";
+      success.style.display = "block";
+
+      this.reset();
+
+      setTimeout(() => {
+        success.style.display = "none";
+      }, 5000);
+
+    })
+    .catch(() => {
+      loader.style.display = "none";
+      alert("Failed to send message. Please try again.");
     });
 });
 

@@ -17,7 +17,7 @@
     <div class="hero reveal">
       <h1>Hi, I'm <span class="typed"></span></h1>
     </div>
-    <img src="MohdZaid_Pic.jpg" alt="My Photo" class="profile-pic reveal">
+    <img src="MohdZaid_Pic.jpg" alt="My Photo" class="profile-pic">
     <nav>
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
@@ -73,29 +73,30 @@
   </section>
 
   <section id="contact" class="reveal">
-    <h2>Contact Me</h2>
+  <h2>Contact Me</h2>
 
-    <form id="contactForm" class="contact-form">
+  <form id="contactForm" class="contact-form">
 
-      <div class="form-row">
-        <input type="text" name="from_name" id="name" placeholder="Your Name" required />
-        <input type="email" name="from_email" id="email" placeholder="Your Email" required />
-      </div>
-      </div>
+    <div class="form-row">
+      <input type="text" name="from_name" id="name" placeholder="Your Name" required>
+      <input type="email" name="from_email" id="email" placeholder="Your Email" required>
+    </div>
 
-      <div class="form-row">
-        <textarea name="message" id="message" rows="5" placeholder="Message" required></textarea>
-      </div>
+    <div class="form-row">
+      <textarea name="message" id="message" rows="5" placeholder="Message" required></textarea>
+    </div>
 
-      <button type="submit" class="send-btn">Send Message</button>
+    <div id="loading" class="loading-spinner"></div>
+    <div id="successMsg" class="success-message">✔ Message Sent Successfully!</div>
 
-    </form>
-  </section>
+    <button type="submit" class="send-btn">Send Message</button>
 
+  </form>
+</section>
 
+<!-- EmailJS MUST LOAD BEFORE your script.js -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="script.js"></script>
 
-  <!-- JS File -->
-  <script src="script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </body>
 </html>
