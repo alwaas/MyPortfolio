@@ -1,3 +1,4 @@
+/* ===================== BASE STYLE ===================== */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -5,7 +6,7 @@ body {
   scroll-behavior: smooth;
 }
 
-/* HEADER */
+/* ===================== HEADER ===================== */
 header {
   background: #1a73e8;
   color: #fff;
@@ -32,7 +33,7 @@ nav a {
 
 nav a:hover { background: #fff; color: #1a73e8; }
 
-/* BUTTON */
+/* ===================== TOGGLE BUTTON ===================== */
 .btn-toggle {
   margin-top: 10px;
   background: #fff;
@@ -43,7 +44,7 @@ nav a:hover { background: #fff; color: #1a73e8; }
   font-weight: bold;
 }
 
-/* HERO */
+/* ===================== HERO SECTION ===================== */
 .hero {
   text-align: center;
   padding: 60px 0;
@@ -54,7 +55,7 @@ nav a:hover { background: #fff; color: #1a73e8; }
   margin: auto;
 }
 
-/* PROFILE IMAGE */
+/* ===================== PROFILE IMAGE ===================== */
 .profile-pic {
   width: 180px;
   height: 180px;
@@ -67,11 +68,11 @@ nav a:hover { background: #fff; color: #1a73e8; }
 }
 
 .profile-pic:hover {
-  transform: scale(1.18); /* 👈 Thoda aur bada */
-  box-shadow: 0px 10px 25px rgba(26, 115, 232, 0.45); /* 👈 Smooth glow */
+  transform: scale(1.18);
+  box-shadow: 0px 10px 25px rgba(26, 115, 232, 0.45);
 }
 
-/* SECTIONS */
+/* ===================== SECTION BOX ===================== */
 section {
   background: #fff;
   width: 90%;
@@ -81,7 +82,7 @@ section {
   border-radius: 10px;
 }
 
-/* PROJECT CARDS */
+/* ===================== PROJECT GRID ===================== */
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -99,7 +100,7 @@ section {
   transform: translateY(-8px);
 }
 
-/* FILTER BUTTONS */
+/* ===================== FILTER BUTTONS ===================== */
 .filter-btns {
   text-align: center;
   margin-bottom: 20px;
@@ -121,7 +122,7 @@ section {
   color: white;
 }
 
-/* BACK TO TOP BUTTON */
+/* ===================== BACK TO TOP ===================== */
 #backToTop {
   position: fixed;
   bottom: 25px;
@@ -136,12 +137,12 @@ section {
   display: none;
 }
 
-/* DARK MODE */
+/* ===================== DARK MODE ===================== */
 body.dark { background: #121212; color: #fff; }
 body.dark section { background: #1e1e1e; }
 body.dark .project-card { background: #333; }
 
-/* SCROLL REVEAL ANIMATION */
+/* ===================== SCROLL REVEAL ===================== */
 .reveal {
   opacity: 0;
   transform: translateY(40px);
@@ -153,13 +154,12 @@ body.dark .project-card { background: #333; }
   transform: translateY(0);
 }
 
-
-/* CONTACT FORM FIXED */
+/* ===================== CONTACT FORM ===================== */
 .contact-form {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  width: 80%;              /* 👈 Total container width (adjust if needed) */
+  width: 80%;
   margin: auto;
 }
 
@@ -169,7 +169,7 @@ body.dark .project-card { background: #333; }
 }
 
 .form-row input {
-  flex: 1;                 /* 👈 Both inputs take equal width */
+  flex: 1;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -177,7 +177,7 @@ body.dark .project-card { background: #333; }
 }
 
 textarea {
-  width: 100%;             /* 👈 EXACT width of the whole row (Name + Email) */
+  width: 100%;
   padding: 12px;
   border-radius: 6px;
   border: 1px solid #ccc;
@@ -196,23 +196,15 @@ textarea {
   width: fit-content;
 }
 
-.send-btn:hover {
-  background: #1558b0;
-}
+.send-btn:hover { background: #1558b0; }
 
-/* MOBILE RESPONSIVE */
+/* ===================== MOBILE RESPONSIVE ===================== */
 @media (max-width: 600px) {
-  .contact-form {
-    width: 90%;
-  }
-
-  .form-row {
-    flex-direction: column;
-  }
+  .contact-form { width: 90%; }
+  .form-row { flex-direction: column; }
 }
 
-
-/* LOADING SPINNER */
+/* ===================== LOADING SPINNER ===================== */
 .loading-spinner {
   display: none;
   margin-top: 10px;
@@ -230,7 +222,7 @@ textarea {
   100% { transform: rotate(360deg); }
 }
 
-/* SUCCESS MESSAGE */
+/* ===================== SUCCESS MESSAGE ===================== */
 .success-message {
   display: none;
   margin-top: 15px;
@@ -248,3 +240,31 @@ textarea {
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* ===================== NEW — PROJECT CATEGORY STYLING ===================== */
+.project-category {
+  margin-bottom: 30px;
+  background: #eef4ff;
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 5px solid #1a73e8;
+}
+
+.project-category h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #1558b0;
+  font-weight: bold;
+}
+
+.project-category ul {
+  line-height: 1.8;
+  padding-left: 20px;
+}
+
+/* Dark Mode Support */
+body.dark .project-category {
+  background: #2a2a2a;
+  border-left: 5px solid #4a90ff;
+}
+
+body.dark .project-category h3 { color: #7ab3ff; }
