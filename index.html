@@ -1,119 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Portfolio</title>
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-  <link rel="stylesheet" href="style.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Mohd Zaid is a frontend developer building modern, responsive web experiences." />
+    <title>Mohd Zaid | Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <button id="backToTop" class="back-to-top" type="button" aria-label="Back to top">↑</button>
 
-<body>
+    <header class="site-header">
+      <div class="container">
+        <nav class="top-nav" aria-label="Primary navigation">
+          <a class="brand" href="#home">Mohd Zaid</a>
+          <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <button id="themeToggle" class="btn-toggle" type="button" aria-pressed="false">Dark Mode</button>
+        </nav>
 
-  <!-- Back To Top Button -->
-  <button id="backToTop">↑</button>
+        <div class="hero reveal" id="home">
+          <div class="hero-copy">
+            <p class="eyebrow">Frontend Developer • UI Engineer</p>
+            <h1>Hi, I'm <span class="typed"></span></h1>
+            <p>I craft polished, responsive web experiences with accessibility and performance in mind.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#projects">View Projects</a>
+              <a class="btn btn-secondary" href="#contact">Get in Touch</a>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <img src="MohdZaid_Pic.jpg" alt="Portrait of Mohd Zaid" class="profile-pic" />
+          </div>
+        </div>
+      </div>
+    </header>
 
-  <header>
-    <div class="hero reveal">
-      <h1>Hi, I'm <span class="typed"></span></h1>
-    </div>
-    <img src="MohdZaid_Pic.jpg" alt="My Photo" class="profile-pic">
-    <nav>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <main id="main-content">
+      <section id="about" class="section reveal">
+        <div class="container">
+          <div class="section-heading">
+            <p class="section-kicker">About</p>
+            <h2>Building purposeful interfaces</h2>
+          </div>
+          <div class="about-grid">
+            <p>
+              I am a front-end developer focused on turning ideas into clean, usable, and scalable web products.
+              My work blends visual design, modern JavaScript, and careful attention to accessibility.
+            </p>
+            <div class="stats">
+              <div class="stat-card">
+                <strong>8+</strong>
+                <span>Projects shipped</span>
+              </div>
+              <div class="stat-card">
+                <strong>100%</strong>
+                <span>Mobile-first layouts</span>
+              </div>
+              <div class="stat-card">
+                <strong>Open</strong>
+                <span>Free tools only</span>
+              </div>
+              <div class="stat-card">
+                <strong>24/7</strong>
+                <span>Curious builder mindset</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    <button id="themeToggle" class="btn-toggle">Dark Mode</button>
-  </header>
+      <section id="skills" class="section reveal">
+        <div class="container">
+          <div class="section-heading">
+            <p class="section-kicker">Skills</p>
+            <h2>Core strengths</h2>
+          </div>
+          <div class="skills-grid">
+            <article class="skill-card">
+              <h3>HTML5</h3>
+              <p>Semantic structure and accessible content.</p>
+            </article>
+            <article class="skill-card">
+              <h3>CSS3</h3>
+              <p>Modern layouts, animations, and responsive UI.</p>
+            </article>
+            <article class="skill-card">
+              <h3>JavaScript</h3>
+              <p>Interactive features and dynamic user flows.</p>
+            </article>
+            <article class="skill-card">
+              <h3>Accessibility</h3>
+              <p>Keyboard-friendly and screen-reader-ready experiences.</p>
+            </article>
+            <article class="skill-card">
+              <h3>React</h3>
+              <p>Reusable component thinking and modern front-end patterns.</p>
+            </article>
+            <article class="skill-card">
+              <h3>Design Systems</h3>
+              <p>Consistent UI patterns for scalable products.</p>
+            </article>
+          </div>
+        </div>
+      </section>
 
-  <section id="about" class="reveal">
-    <h2>About Me</h2>
-    <p>Hello! I'm a Front-End Developer passionate about creating clean and responsive web interfaces.</p>
-  </section>
+      <section id="projects" class="section reveal">
+        <div class="container">
+          <div class="section-heading">
+            <p class="section-kicker">Projects</p>
+            <h2>Selected work</h2>
+          </div>
 
-  <section id="skills" class="reveal">
-    <h2>Skills</h2>
-    <ul>
-      <li>HTML5</li>
-      <li>CSS3</li>
-      <li>JavaScript (Basics)</li>
-      <li>Responsive Web Design</li>
-      <li>React.js</li>
-    </ul>
-  </section>
+          <div class="filter-controls" role="group" aria-label="Project categories">
+            <button class="filter-btn active" type="button" data-filter="all">All</button>
+            <button class="filter-btn" type="button" data-filter="beginner">Beginner</button>
+            <button class="filter-btn" type="button" data-filter="intermediate">Intermediate</button>
+            <button class="filter-btn" type="button" data-filter="advanced">Advanced</button>
+          </div>
 
-  <!-- Portfolio Project Sections (Beginner, Intermediate, Advanced) -->
-  <section id="projects" class="projects-section">
-  <h2 class="section-title">Projects</h2>
+          <div class="projects-grid">
+            <article class="project-card" data-category="beginner">
+              <h3>Counter Webpage</h3>
+              <p>A lightweight interaction demo built with JavaScript, HTML, and CSS.</p>
+              <div class="tag-list">
+                <span>JavaScript</span>
+                <span>HTML</span>
+                <span>CSS</span>
+              </div>
+              <a href="https://alwaas.github.io/Basic_Counter/" target="_blank" rel="noreferrer">Live demo ↗</a>
+            </article>
 
+            <article class="project-card" data-category="beginner">
+              <h3>Portfolio Website</h3>
+              <p>A personal portfolio experience with polished visuals and contact flow.</p>
+              <div class="tag-list">
+                <span>EmailJS</span>
+                <span>JavaScript</span>
+                <span>Responsive</span>
+              </div>
+              <a href="https://alwaasportfolio.netlify.app/" target="_blank" rel="noreferrer">Live demo ↗</a>
+            </article>
 
-  <!-- Beginner Level Projects -->
-  <div class="project-category">
-  <h3>Beginner Level Projects</h3>
-  <ul>
-  <li><a href="https://alwaas.github.io/Basic_Counter/" target="_blank">Cunter WebPage (JavaScript, HTML, CSS)</a></li>
-  <li><a href="https://alwaasportfolio.netlify.app/" target="_blank">Portfolio Website (JavaScript, Email.js, HTML, CSS)</a></li>
-  <li><a href="https://alwaas.github.io/MyCalculator/" target="_blank">Calculator App (HTML, CSS, JavaScript)</a></li>
-  <li><a href="https://alwaas.github.io/To-Do-List-App/" target="_blank">To‑Do List App (JavaScript DOM)</a></li>
-  <li><a href="https://alwaas.github.io/Expense-Tracker-And-Password-Generator-Dual-Web-App/" target="_blank">Expense Tracker & Password Generator — Dual Web App</a></li>
-  <li>Digital Clock (JavaScript)</li>
-  </ul>
-  </div>
+            <article class="project-card" data-category="beginner">
+              <h3>Calculator App</h3>
+              <p>Clean arithmetic UI with keyboard-friendly interactions.</p>
+              <div class="tag-list">
+                <span>UI</span>
+                <span>JavaScript</span>
+                <span>CSS</span>
+              </div>
+              <a href="https://alwaas.github.io/MyCalculator/" target="_blank" rel="noreferrer">Live demo ↗</a>
+            </article>
 
+            <article class="project-card" data-category="intermediate">
+              <h3>Weather Dashboard</h3>
+              <p>A dashboard-style app that fetches live weather data and presents it clearly.</p>
+              <div class="tag-list">
+                <span>API</span>
+                <span>Fetch</span>
+                <span>UI</span>
+              </div>
+              <a href="#contact">Request preview</a>
+            </article>
 
-  <!-- Intermediate Level Projects -->
-  <div class="project-category">
-  <h3>Intermediate Level Projects</h3>
-  <ul>
-  <li>Weather App (API Integration)</li>
-  <li>Movie Search App (TMDB API)</li>
-  <li>Notes App with LocalStorage</li>
-  <li>Expense Tracker</li>
-  <li>Image Gallery with Filtering</li>
-  </ul>
-  </div>
+            <article class="project-card" data-category="intermediate">
+              <h3>Notes App</h3>
+              <p>Local-first note-taking utility with persistent data and an approachable layout.</p>
+              <div class="tag-list">
+                <span>LocalStorage</span>
+                <span>JavaScript</span>
+                <span>Productivity</span>
+              </div>
+              <a href="#contact">Request preview</a>
+            </article>
 
+            <article class="project-card" data-category="advanced">
+              <h3>Dashboard Concept</h3>
+              <p>Planning-oriented analytics layout designed for clear summaries and quick actions.</p>
+              <div class="tag-list">
+                <span>Charts</span>
+                <span>Analytics</span>
+                <span>Design</span>
+              </div>
+              <a href="#contact">Request preview</a>
+            </article>
+          </div>
+        </div>
+      </section>
 
-  <!-- Advanced Level Projects -->
-  <div class="project-category">
-  <h3>Advanced Level Projects</h3>
-  <ul>
-  <li>Full Authentication App (JWT / Firebase Auth)</li>
-  <li>Dashboard with Charts (Chart.js)</li>
-  <li>Real‑Time Chat App (WebSockets / Firebase)</li>
-  <li>Blog CMS (Admin Panel + CRUD)</li>
-  <li>E‑Commerce Frontend (Cart + Filters + UI)</li>
-  </ul>
-  </div>
-  </section>
+      <section id="contact" class="section reveal">
+        <div class="container">
+          <div class="contact-grid">
+            <div class="contact-card">
+              <p class="section-kicker">Contact</p>
+              <h2>Let’s build something useful</h2>
+              <p>
+                If you need a modern front-end experience, a polished landing page, or a thoughtful web product,
+                I would love to hear from you.
+              </p>
+              <ul class="contact-list">
+                <li><a href="mailto:your@email.com">your@email.com</a></li>
+                <li><a href="https://github.com/alwaas" target="_blank" rel="noreferrer">GitHub</a></li>
+              </ul>
+            </div>
 
-  <section id="contact" class="reveal">
-  <h2>Contact Me</h2>
+            <form id="contactForm" class="contact-card contact-form" novalidate>
+              <label for="name">
+                Your Name
+                <input type="text" name="from_name" id="name" placeholder="Your Name" required />
+              </label>
 
-  <form id="contactForm" class="contact-form">
+              <label for="email">
+                Your Email
+                <input type="email" name="from_email" id="email" placeholder="Your Email" required />
+              </label>
 
-    <div class="form-row">
-      <input type="text" name="from_name" id="name" placeholder="Your Name" required>
-      <input type="email" name="from_email" id="email" placeholder="Your Email" required>
-    </div>
+              <label for="message">
+                Message
+                <textarea name="message" id="message" rows="5" placeholder="Tell me about your idea" required></textarea>
+              </label>
 
-    <div class="form-row">
-      <textarea name="message" id="message" rows="5" placeholder="Message" required></textarea>
-    </div>
+              <div id="loading" class="loading-spinner" aria-live="polite"></div>
+              <p id="successMsg" class="success-message" role="status" aria-live="polite"></p>
+              <button type="submit" class="send-btn">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
 
-    <div id="loading" class="loading-spinner"></div>
-    <div id="successMsg" class="success-message">✔ Message Sent Successfully!</div>
+    <footer class="site-footer">
+      <div class="container">
+        <p>© 2026 Mohd Zaid. Built with free and open-source tools.</p>
+      </div>
+    </footer>
 
-    <button type="submit" class="send-btn">Send Message</button>
-
-  </form>
-</section>
-
-<!-- EmailJS MUST LOAD BEFORE your script.js -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script src="script.js"></script>
-
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>

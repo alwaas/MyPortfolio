@@ -1,101 +1,162 @@
-// TYPED TEXT
-var typed = new Typed('.typed', {
-  strings: ["A Front-End Developer", "A UI/UX Designer", "A Problem Solver"],
-  typeSpeed: 70,
-  backSpeed: 50,
-  loop: true
-});
-
-// FORM VALIDATION
-function validateForm() {
-  const email = document.getElementById("email").value;
-  if (!email.includes("@")) {
-    alert("Enter a valid email address!");
-    return false;
-  }
-  alert("Message Sent Successfully!");
-  return true;
-}
-
-// DARK MODE
-const toggleBtn = document.getElementById('themeToggle');
-toggleBtn.onclick = () => {
-  document.body.classList.toggle("dark");
-  toggleBtn.textContent = 
-    document.body.classList.contains("dark") ? "Light Mode" : "Dark Mode";
-};
-
-// PROJECT FILTERING
+const themeToggle = document.getElementById("themeToggle");
+const backToTop = document.getElementById("backToTop");
 const filterButtons = document.querySelectorAll(".filter-btn");
 const projects = document.querySelectorAll(".project-card");
+const contactForm = document.getElementById("contactForm");
+const loader = document.getElementById("loading");
+const successMsg = document.getElementById("successMsg");
 
-filterButtons.forEach(btn => {
-  btn.addEventListener("click", () => {
-    
-    document.querySelector(".filter-btn.active").classList.remove("active");
-    btn.classList.add("active");
+function applyTheme(theme) {
+  const isDark = theme === "dark";
+  document.body.classList.toggle("dark", isDark);
+  if (themeToggle) {
+    themeToggle.textContent = isDark ? "Light Mode" : "Dark Mode";
+    themeToggle.setAttribute("aria-pressed", String(isDark));
+  }
+  localStorage.setItem("portfolio-theme", theme);
+}
 
-    let filter = btn.getAttribute("data-filter");
+function initTheme() {
+  const savedTheme = localStorage.getItem("portfolio-theme");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  applyTheme(savedTheme || (prefersDark ? "dark" : "light"));
+}
 
-    projects.forEach(project => {
-      project.style.display =
-        filter === "all" || project.dataset.category === filter
-          ? "block"
-          : "none";
-    });
-  });
-});
-
-// SCROLL REVEAL
-function revealOnScroll() {
-  document.querySelectorAll(".reveal").forEach(el => {
-    const top = el.getBoundingClientRect().top;
-    if (top < window.innerHeight - 100) el.classList.add("active");
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    const isDark = document.body.classList.contains("dark");
+    applyTheme(isDark ? "light" : "dark");
   });
 }
-window.addEventListener("scroll", revealOnScroll);
-revealOnScroll();
 
-// BACK TO TOP BUTTON
-const topBtn = document.getElementById("backToTop");
+if (typeof Typed !== "undefined") {
+  new Typed(".typed", {
+    strings: ["a Front-End Developer", "a UI/UX Designer", "a Problem Solver"],
+    typeSpeed: 70,
+    backSpeed: 50,
+    loop: true,
+  });
+}
 
-window.addEventListener("scroll", () => {
-  topBtn.style.display = window.scrollY > 350 ? "block" : "none";
-});
+function initReveal() {
+  const revealItems = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
 
-topBtn.onclick = () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-};
+    revealItems.forEach((item) => observer.observe(item));
+  } else {
+    revealItems.forEach((item) => item.classList.add("active"));
+  }
+}
 
-// EmailJS Initialization
-emailjs.init("HYkii9n-oDCPmXW6v");
+function initFilters() {
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      document.querySelector(".filter-btn.active")?.classList.remove("active");
+      button.classList.add("active");
 
-// SUBMIT HANDLER
-document.getElementById("contactForm").addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  const loader = document.getElementById("loading");
-  const success = document.getElementById("successMsg");
-
-  loader.style.display = "block";
-  success.style.display = "none";
-
-  emailjs.sendForm("service_d6g670l", "template_f7rafcl", this)
-    .then(() => {
-
-      loader.style.display = "none";
-      success.style.display = "block";
-
-      this.reset();
-
-      setTimeout(() => {
-        success.style.display = "none";
-      }, 5000);
-
-    })
-    .catch(() => {
-      loader.style.display = "none";
-      alert("Failed to send message. Please try again.");
+      const filter = button.getAttribute("data-filter");
+      projects.forEach((project) => {
+        const matches = filter === "all" || project.dataset.category === filter;
+        project.style.display = matches ? "flex" : "none";
+      });
     });
+  });
+}
+
+function toggleBackToTop() {
+  if (backToTop) {
+    backToTop.style.display = window.scrollY > 320 ? "block" : "none";
+  }
+}
+
+if (backToTop) {
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+if (contactForm) {
+  contactForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    if (loader) {
+      loader.style.display = "block";
+    }
+    if (successMsg) {
+      successMsg.style.display = "none";
+    }
+
+    const formData = new FormData(this);
+    const name = formData.get("from_name")?.toString().trim() || "";
+    const email = formData.get("from_email")?.toString().trim() || "";
+
+    if (!name || !email.includes("@")) {
+      if (loader) {
+        loader.style.display = "none";
+      }
+      if (successMsg) {
+        successMsg.textContent = "Please provide a valid name and email.";
+        successMsg.style.display = "block";
+      }
+      return;
+    }
+
+    if (window.emailjs && typeof window.emailjs.sendForm === "function") {
+      window.emailjs.init("HYkii9n-oDCPmXW6v");
+      window.emailjs
+        .sendForm("service_d6g670l", "template_f7rafcl", this)
+        .then(() => {
+          if (loader) {
+            loader.style.display = "none";
+          }
+          if (successMsg) {
+            successMsg.textContent = "Message sent successfully.";
+            successMsg.style.display = "block";
+          }
+          this.reset();
+          setTimeout(() => {
+            if (successMsg) {
+              successMsg.style.display = "none";
+            }
+          }, 4000);
+        })
+        .catch(() => {
+          if (loader) {
+            loader.style.display = "none";
+          }
+          if (successMsg) {
+            successMsg.textContent = "The message could not be sent right now. Please email me directly.";
+            successMsg.style.display = "block";
+          }
+        });
+    } else {
+      if (loader) {
+        loader.style.display = "none";
+      }
+      if (successMsg) {
+        successMsg.textContent = "The contact form is ready. Please email me directly for now.";
+        successMsg.style.display = "block";
+      }
+    }
+  });
+}
+
+window.addEventListener("scroll", toggleBackToTop);
+window.addEventListener("DOMContentLoaded", () => {
+  initTheme();
+  initReveal();
+  initFilters();
+  toggleBackToTop();
 });
 
